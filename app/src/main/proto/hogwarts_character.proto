@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option java_package = "com.hogwartslegacy.core.data.local.model";
+option java_multiple_files = true;
+
+message AllHogwartsCharacters {
+    repeated ProtoHogwartsCharacter characters = 1;
+}
+
+enum ProtoHouse {
+    GRYFFINDOR = 0;
+    SLYTHERIN = 1;
+    RAVENCLAW = 2;
+    HUFFLEPUFF = 3;
+}
+message ProtoWand{
+    string core = 1;
+    float length = 2;
+    string wood = 3;
+}
+
+message ProtoHogwartsCharacter {
+    string actor = 1;
+    bool alive = 2;
+    string ancestry = 3;
+    string dateOfBirth = 4;
+    string eyeColour = 5;
+    string gender = 6;
+    string hairColour = 7;
+    bool hogwartsStaff = 8;
+    bool hogwartsStudent = 9;
+    ProtoHouse house=10;
+    string id=11;
+    string image=12;
+    string name=13;
+    string species=14;
+    ProtoWand wand=15;
+    bool wizard=16;
+    int32 yearOfBirth=17;
+}

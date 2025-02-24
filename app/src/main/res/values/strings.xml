@@ -5,4 +5,7 @@
     <string name="from_house">from %1s</string>
     <string name="alive">Alive</string>
     <string name="dead">Dead</string>
+    <string name="back_cta">Back</string>
+    <string name="search_cta">Search</string>
+    <string name="search_placeholder">Character or Actor name</string>
 </resources>

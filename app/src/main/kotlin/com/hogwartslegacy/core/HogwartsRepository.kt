@@ -6,4 +6,5 @@ import kotlinx.coroutines.flow.Flow
 interface HogwartsRepository {
     fun getCharacters(): Flow<List<HogwartsCharacter>>
     fun getCharacter(id: String): Flow<HogwartsCharacter>
+    suspend fun syncRemoteData()
 }

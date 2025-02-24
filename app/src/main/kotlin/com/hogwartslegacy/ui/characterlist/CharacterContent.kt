@@ -23,7 +23,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
-import coil3.compose.rememberAsyncImagePainter
 import coil3.request.ImageRequest
 import coil3.request.transformations
 import coil3.transform.CircleCropTransformation
@@ -35,7 +34,7 @@ import com.hogwartslegacy.ui.theme.LocalExtendedColorScheme
 
 
 @Composable
-fun CharacterContent(
+internal fun CharacterContent(
     character: HogwartsCharacterState,
     modifier: Modifier = Modifier
 ) {
@@ -95,25 +94,25 @@ fun CharacterContent(
     }
 }
 
-val HogwartsCharacterState.community: Int
+private val HogwartsCharacterState.community: Int
     get() =
         if (this.isStudent) R.string.student else R.string.staff
 
 @Composable
-fun HogwartsCharacterState.aliveOrDead(): Pair<Int, Color> {
+private fun HogwartsCharacterState.aliveOrDead(): Pair<Int, Color> {
     val extendedColors = LocalExtendedColorScheme.current
     return if (this.alive) R.string.alive to extendedColors.success
     else R.string.dead to extendedColors.error
 }
 
 @Composable
-fun HogwartsCharacterState.houseColor(): Color {
+private fun HogwartsCharacterState.houseColor(): Color {
     val extendedColors = LocalExtendedColorScheme.current
     return when (this.house) {
-        HogwartsCharacter.House.Gryffindor -> extendedColors.gryffindor
-        HogwartsCharacter.House.Slytherin -> extendedColors.slytherin
-        HogwartsCharacter.House.Ravenclaw -> extendedColors.ravenclaw
-        HogwartsCharacter.House.Hufflepuff -> extendedColors.hufflepuff
+        HogwartsCharacter.House.GRYFFINDOR -> extendedColors.gryffindor
+        HogwartsCharacter.House.SLYTHERIN -> extendedColors.slytherin
+        HogwartsCharacter.House.RAVENCLAW -> extendedColors.ravenclaw
+        HogwartsCharacter.House.HUFFLEPUFF -> extendedColors.hufflepuff
         null -> Color.Transparent
     }
 }
@@ -128,9 +127,10 @@ fun CharacterContentPreview() {
                     id = "id",
                     name = "Harry Potter",
                     alive = true,
-                    house = HogwartsCharacter.House.Gryffindor,
+                    house = HogwartsCharacter.House.GRYFFINDOR,
                     profile = null,
-                    isStudent = true
+                    isStudent = true,
+                    actorName = "Daniel"
                 )
             )
         }
@@ -147,9 +147,10 @@ fun CharacterContentDarkPreview() {
                     id = "id",
                     name = "Harry Potter",
                     alive = false,
-                    house = HogwartsCharacter.House.Gryffindor,
+                    house = HogwartsCharacter.House.HUFFLEPUFF,
                     profile = null,
-                    isStudent = true
+                    isStudent = true,
+                    actorName = "Daniel"
                 )
             )
         }

@@ -38,7 +38,7 @@ fun AppNavHost(
         composable(NavigationItem.Splash.route) {
             //SplashScreen(navController)
         }
-        composable(NavigationItem.CharacterList.route) {
+        composable(route = NavigationItem.CharacterList.route) {
             CharacterListComposable(
                 onCharacterSelected = { characterId ->
                     navController.navigate(

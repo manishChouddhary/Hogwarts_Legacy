@@ -20,10 +20,10 @@ data class HogwartsCharacter(
     val yearOfBirth: Int?
 ){
     enum class House{
-        Gryffindor,
-        Slytherin,
-        Ravenclaw,
-        Hufflepuff
+        GRYFFINDOR,
+        SLYTHERIN,
+        RAVENCLAW,
+        HUFFLEPUFF
     }
 }
 
