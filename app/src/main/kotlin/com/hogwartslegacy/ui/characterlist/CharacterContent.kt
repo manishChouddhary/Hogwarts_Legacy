@@ -1,0 +1,157 @@
+package com.hogwartslegacy.ui.characterlist
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import coil3.compose.AsyncImage
+import coil3.compose.rememberAsyncImagePainter
+import coil3.request.ImageRequest
+import coil3.request.transformations
+import coil3.transform.CircleCropTransformation
+import com.hogwartslegacy.R
+import com.hogwartslegacy.core.data.model.HogwartsCharacter
+import com.hogwartslegacy.presentation.HogwartsCharacterState
+import com.hogwartslegacy.ui.theme.HogwartsLegacyTheme
+import com.hogwartslegacy.ui.theme.LocalExtendedColorScheme
+
+
+@Composable
+fun CharacterContent(
+    character: HogwartsCharacterState,
+    modifier: Modifier = Modifier
+) {
+    val extendedColors = LocalExtendedColorScheme.current
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .background(extendedColors.surface)
+            .shadow(elevation = 4.dp)
+            .padding(vertical = 10.dp, horizontal = 8.dp),
+        horizontalArrangement = Arrangement.spacedBy(10.dp),
+    ) {
+        character.profile?.let {
+            AsyncImage(
+                error = painterResource(R.drawable.profile),
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(it)
+                    .transformations(CircleCropTransformation())
+                    .build(),
+                contentDescription = null,
+                modifier = Modifier
+                    .background(color = extendedColors.surface)
+                    .size(54.dp)
+            )
+        }
+        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Row(
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = character.name,
+                    fontSize = 26.sp,
+                    color = extendedColors.primaryText
+                )
+                Spacer(Modifier.weight(1f))
+                Box(
+                    Modifier
+                        .background(
+                            color = character.houseColor(),
+                            shape = RoundedCornerShape(14.dp)
+                        )
+                        .size(20.dp),
+                )
+            }
+            Text(
+                text = stringResource(character.community),
+                fontSize = 20.sp,
+                color = extendedColors.secondaryText
+            )
+            Text(
+                text = stringResource(character.aliveOrDead().first),
+                fontSize = 20.sp,
+                color = character.aliveOrDead().second
+            )
+        }
+    }
+}
+
+val HogwartsCharacterState.community: Int
+    get() =
+        if (this.isStudent) R.string.student else R.string.staff
+
+@Composable
+fun HogwartsCharacterState.aliveOrDead(): Pair<Int, Color> {
+    val extendedColors = LocalExtendedColorScheme.current
+    return if (this.alive) R.string.alive to extendedColors.success
+    else R.string.dead to extendedColors.error
+}
+
+@Composable
+fun HogwartsCharacterState.houseColor(): Color {
+    val extendedColors = LocalExtendedColorScheme.current
+    return when (this.house) {
+        HogwartsCharacter.House.Gryffindor -> extendedColors.gryffindor
+        HogwartsCharacter.House.Slytherin -> extendedColors.slytherin
+        HogwartsCharacter.House.Ravenclaw -> extendedColors.ravenclaw
+        HogwartsCharacter.House.Hufflepuff -> extendedColors.hufflepuff
+        null -> Color.Transparent
+    }
+}
+
+@Composable
+@Preview
+fun CharacterContentPreview() {
+    HogwartsLegacyTheme {
+        Box(modifier = Modifier.fillMaxWidth()) {
+            CharacterContent(
+                HogwartsCharacterState(
+                    id = "id",
+                    name = "Harry Potter",
+                    alive = true,
+                    house = HogwartsCharacter.House.Gryffindor,
+                    profile = null,
+                    isStudent = true
+                )
+            )
+        }
+    }
+}
+
+@Composable
+@Preview
+fun CharacterContentDarkPreview() {
+    HogwartsLegacyTheme(darkTheme = true) {
+        Box(modifier = Modifier.fillMaxWidth()) {
+            CharacterContent(
+                HogwartsCharacterState(
+                    id = "id",
+                    name = "Harry Potter",
+                    alive = false,
+                    house = HogwartsCharacter.House.Gryffindor,
+                    profile = null,
+                    isStudent = true
+                )
+            )
+        }
+    }
+}

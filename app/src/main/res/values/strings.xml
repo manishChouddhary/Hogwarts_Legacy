@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Hogwarts legacy</string>
+    <string name="student">Student</string>
+    <string name="staff">Staff</string>
+    <string name="from_house">from %1s</string>
+    <string name="alive">Alive</string>
+    <string name="dead">Dead</string>
+</resources>
