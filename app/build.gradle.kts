@@ -84,6 +84,7 @@ dependencies {
     implementation(libs.androidx.datastore)
     implementation(libs.protobuf.javalite)
     implementation(libs.accompanist.systemuicontroller)
+    implementation(libs.kotlinx.serialization.json)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

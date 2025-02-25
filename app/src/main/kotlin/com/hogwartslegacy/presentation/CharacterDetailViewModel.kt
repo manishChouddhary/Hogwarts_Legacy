@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hogwartslegacy.core.HogwartsCore
 import com.hogwartslegacy.core.data.model.HogwartsCharacter
+import com.hogwartslegacy.core.extension.dateShortMonthYear
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
@@ -17,12 +18,15 @@ internal data class CharacterDetailState(
 )
 
 internal data class CharacterState(
-    val id: String,
     val name: String,
+    val actor: String,
     val alive: Boolean,
     val house: HogwartsCharacter.House?,
     val profile: String?,
     val isStaff: Boolean,
+    val dateOfBirth: String?,
+    val species: String,
+    val gender: String
 )
 
 class CharacterDetailViewModel(
@@ -32,12 +36,15 @@ class CharacterDetailViewModel(
     internal val state = hogwartsCore.getCharacter(characterId).map {
         CharacterDetailState(
             character = CharacterState(
-                id = it.id,
                 name = it.name,
+                actor = it.actor,
                 alive = it.alive,
                 house = it.house,
                 profile = it.image,
-                isStaff = it.hogwartsStaff
+                isStaff = it.hogwartsStaff,
+                dateOfBirth = it.dateOfBirth?.dateShortMonthYear(),
+                species = it.species,
+                gender = it.gender
             )
         )
     }.catch {

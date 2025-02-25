@@ -1,5 +1,7 @@
 package com.hogwartslegacy.core.data.model
 
+import com.google.gson.annotations.SerializedName
+
 data class HogwartsCharacter(
     val actor: String,
     val alive: Boolean,
@@ -18,11 +20,15 @@ data class HogwartsCharacter(
     val wand: Wand,
     val wizard: Boolean,
     val yearOfBirth: Int?
-){
-    enum class House{
+) {
+    enum class House {
+        @SerializedName("Gryffindor")
         GRYFFINDOR,
+        @SerializedName("Slytherin")
         SLYTHERIN,
+        @SerializedName("Ravenclaw")
         RAVENCLAW,
+        @SerializedName("Hufflepuff")
         HUFFLEPUFF
     }
 }

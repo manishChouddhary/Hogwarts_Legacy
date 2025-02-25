@@ -58,6 +58,7 @@ internal fun CharacterContent(
                 modifier = Modifier
                     .background(color = extendedColors.surface)
                     .size(54.dp)
+                    .align(Alignment.CenterVertically)
             )
         }
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -81,28 +82,17 @@ internal fun CharacterContent(
                 )
             }
             Text(
-                text = stringResource(character.community),
+                text = character.species,
                 fontSize = 20.sp,
                 color = extendedColors.secondaryText
             )
             Text(
-                text = stringResource(character.aliveOrDead().first),
+                text = stringResource(R.string.played_by_actor, character.actorName),
                 fontSize = 20.sp,
-                color = character.aliveOrDead().second
+                color = extendedColors.secondaryText
             )
         }
     }
-}
-
-private val HogwartsCharacterState.community: Int
-    get() =
-        if (this.isStudent) R.string.student else R.string.staff
-
-@Composable
-private fun HogwartsCharacterState.aliveOrDead(): Pair<Int, Color> {
-    val extendedColors = LocalExtendedColorScheme.current
-    return if (this.alive) R.string.alive to extendedColors.success
-    else R.string.dead to extendedColors.error
 }
 
 @Composable
@@ -130,7 +120,8 @@ fun CharacterContentPreview() {
                     house = HogwartsCharacter.House.GRYFFINDOR,
                     profile = null,
                     isStudent = true,
-                    actorName = "Daniel"
+                    actorName = "Daniel",
+                    species = "human"
                 )
             )
         }
@@ -148,9 +139,10 @@ fun CharacterContentDarkPreview() {
                     name = "Harry Potter",
                     alive = false,
                     house = HogwartsCharacter.House.HUFFLEPUFF,
-                    profile = null,
+                    profile = "",
                     isStudent = true,
-                    actorName = "Daniel"
+                    actorName = "Daniel",
+                    species = "human"
                 )
             )
         }

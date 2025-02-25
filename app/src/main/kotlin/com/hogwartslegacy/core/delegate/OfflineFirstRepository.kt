@@ -2,7 +2,6 @@ package com.hogwartslegacy.core.delegate
 
 import com.hogwartslegacy.core.HogwartsRepository
 import com.hogwartslegacy.core.data.local.LocalDataSource
-import com.hogwartslegacy.core.data.local.toProtoHogwartsCharacterList
 import com.hogwartslegacy.core.data.model.HogwartsCharacter
 import com.hogwartslegacy.core.data.remote.RemoteDataSource
 import kotlinx.coroutines.NonCancellable

@@ -23,18 +23,18 @@ message ProtoHogwartsCharacter {
     string actor = 1;
     bool alive = 2;
     string ancestry = 3;
-    string dateOfBirth = 4;
+    optional string dateOfBirth = 4;
     string eyeColour = 5;
     string gender = 6;
     string hairColour = 7;
     bool hogwartsStaff = 8;
     bool hogwartsStudent = 9;
-    ProtoHouse house=10;
+    optional ProtoHouse house=10;
     string id=11;
-    string image=12;
+    optional string image=12;
     string name=13;
     string species=14;
     ProtoWand wand=15;
     bool wizard=16;
-    int32 yearOfBirth=17;
+    optional int32 yearOfBirth=17;
 }

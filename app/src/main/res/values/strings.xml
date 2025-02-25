@@ -2,10 +2,22 @@
     <string name="app_name">Hogwarts legacy</string>
     <string name="student">Student</string>
     <string name="staff">Staff</string>
-    <string name="from_house">from %1s</string>
+    <string name="from_house">from house of</string>
     <string name="alive">Alive</string>
     <string name="dead">Dead</string>
     <string name="back_cta">Back</string>
     <string name="search_cta">Search</string>
     <string name="search_placeholder">Character or Actor name</string>
+    <string name="character">Character</string>
+    <string name="played_by">Played by</string>
+    <string name="played_by_actor">Played by %1s</string>
+    <string name="date_of_birth">Born on</string>
+    <string name="gryffindor">Gryffindor</string>
+    <string name="slytherin">Slytherin</string>
+    <string name="ravenclaw">Ravenclaw</string>
+    <string name="hufflepuff">Hufflepuff</string>
+    <string name="species">Race</string>
+    <string name="hogwarts">Hogwarts</string>
+    <string name="gender">Gender</string>
+
 </resources>

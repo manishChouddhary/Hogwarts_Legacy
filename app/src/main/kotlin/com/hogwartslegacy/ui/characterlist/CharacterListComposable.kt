@@ -129,7 +129,7 @@ private fun CharacterListContent(
 ) {
     val extendedColors = LocalExtendedColorScheme.current
     LazyColumn(
-        contentPadding = PaddingValues(horizontal = 16.dp),
+        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 10.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp),
         modifier = Modifier.background(extendedColors.background)
     ) {

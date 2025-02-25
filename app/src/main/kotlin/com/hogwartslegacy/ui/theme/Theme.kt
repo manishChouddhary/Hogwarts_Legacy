@@ -45,7 +45,7 @@ data class ExtendedColorScheme(
     val background: Color,
     val primaryText: Color,
     val secondaryText: Color,
-    val success: Color = Color.Green,
+    val success: Color = Color(0xFF046218),
     val error: Color = Color.Red
 )
 

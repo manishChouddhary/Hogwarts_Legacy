@@ -27,7 +27,8 @@ internal data class HogwartsCharacterState(
     val house: HogwartsCharacter.House?,
     val profile: String?,
     val isStudent: Boolean,
-    val actorName: String
+    val actorName: String,
+    val species: String
 )
 
 class CharacterListViewModel(hogwartsCore: HogwartsCore) : ViewModel() {
@@ -52,7 +53,8 @@ class CharacterListViewModel(hogwartsCore: HogwartsCore) : ViewModel() {
                             house = character.house,
                             profile = character.image,
                             isStudent = character.hogwartsStudent,
-                            actorName = character.actor
+                            actorName = character.actor,
+                            species = character.species
                         )
                     }
             )

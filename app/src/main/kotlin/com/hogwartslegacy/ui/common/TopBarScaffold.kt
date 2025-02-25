@@ -66,7 +66,7 @@ fun TopBarScaffold(
 
 @Composable
 @Preview
-fun TopBarScaffoldPreview() {
+private fun TopBarScaffoldPreview() {
     TopBarScaffold(
         title = "Hogwarts Legacy",
         onSearchClick = { }
