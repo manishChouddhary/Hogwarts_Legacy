@@ -19,8 +19,8 @@ enum class Screen {
 
 sealed class NavigationItem(val route: String) {
     data object Splash : NavigationItem(Screen.SPLASH.name)
-    object CharacterList : NavigationItem(Screen.CHARACTER_LIST.name)
-    object CharacterDetail : NavigationItem(Screen.CHARACTER_DETAILS.name + "/{$CHARACTER_ID}")
+    data object CharacterList : NavigationItem(Screen.CHARACTER_LIST.name)
+    data object CharacterDetail : NavigationItem(Screen.CHARACTER_DETAILS.name + "/{$CHARACTER_ID}")
 }
 
 

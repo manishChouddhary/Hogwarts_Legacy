@@ -28,11 +28,6 @@ private val LightColorScheme = lightColorScheme(
     tertiary = Pink40,
     background = Color(0xFFA9C6BF),
     surface = Color(0xFF6B9E92),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
 )
 
 data class ExtendedColorScheme(
@@ -49,34 +44,28 @@ data class ExtendedColorScheme(
     val error: Color = Color.Red
 )
 
-val gryffindor = 0xFF740001
-val slytherin = 0xFF1a472a
-val ravenclaw = 0xFF0c1a40
-val hufflepuff = 0xFFeeb939
-
 val extendedLightColorScheme = ExtendedColorScheme(
     colorScheme = LightColorScheme,
-    gryffindor = Color(gryffindor),
-    slytherin = Color(slytherin),
-    ravenclaw = Color(ravenclaw),
-    hufflepuff = Color(hufflepuff),
-    background = Color(0xFFA9C6BF),
-    surface = Color(0xFF6B9E92),
-    primaryText = Color(0xFF182521),
-    secondaryText = Color(0xFF20312C),
-
+    gryffindor = gryffindor,
+    slytherin = slytherin,
+    ravenclaw = ravenclaw,
+    hufflepuff = hufflepuff,
+    background = lightBackground,
+    surface = lightSurface,
+    primaryText = lightPrimaryText,
+    secondaryText = lightSecondaryText,
 )
 
 val extendedDarkColorScheme = ExtendedColorScheme(
     colorScheme = DarkColorScheme,
-    gryffindor = Color(gryffindor),
-    slytherin = Color(slytherin),
-    ravenclaw = Color(ravenclaw),
-    hufflepuff = Color(hufflepuff),
-    background = Color(0xFF080C0B),
-    surface = Color(0xFF182522),
-    primaryText = Color(0xFFE6EFEC),
-    secondaryText = Color(0xFFF3F7F6),
+    gryffindor = gryffindor,
+    slytherin = slytherin,
+    ravenclaw = ravenclaw,
+    hufflepuff = hufflepuff,
+    background = darkBackground,
+    surface = darkSurface,
+    primaryText = darkPrimaryText,
+    secondaryText = darkSecondaryText,
 )
 
 val LocalExtendedColorScheme = staticCompositionLocalOf { extendedLightColorScheme }

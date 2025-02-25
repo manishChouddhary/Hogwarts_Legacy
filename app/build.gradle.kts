@@ -10,7 +10,7 @@ plugins {
 android {
     namespace = "com.hogwartslegacy"
     compileSdk = 35
-    android.buildFeatures.buildConfig = true;
+    android.buildFeatures.buildConfig = true
     defaultConfig {
         applicationId = "com.hogwartslegacy"
         minSdk = 28

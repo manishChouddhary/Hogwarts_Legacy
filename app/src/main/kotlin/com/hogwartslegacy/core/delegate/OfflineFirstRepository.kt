@@ -31,7 +31,7 @@ class OfflineFirstRepository(
 
     override fun getCharacter(id: String): Flow<HogwartsCharacter> = localDataStore.getCharacter(id)
 
-    override suspend fun syncRemoteData() {
+    private suspend fun syncRemoteData() {
         withContext(syncContext) {
             syncMutex.withLock {
                 val empty = localDataStore.isEmpty()
