@@ -1,6 +1,5 @@
-package com.hogwartslegacy.presentation
+package com.hogwartslegacy.characterdetail.presentation
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hogwartslegacy.core.HogwartsCore
@@ -10,6 +9,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import timber.log.Timber
 
 internal data class CharacterDetailState(
     val character: CharacterState? = null,
@@ -48,11 +48,11 @@ class CharacterDetailViewModel(
             )
         )
     }.catch {
-        Log.d("List:", "Error loading list " + it.message)
+        Timber.d(it)
         emit(CharacterDetailState(isError = true))
     }.stateIn(
         viewModelScope,
-        SharingStarted.WhileSubscribed(BACKGROUND_THRESHOLD),
+        SharingStarted.WhileSubscribed(),
         CharacterDetailState(isLoading = true)
     )
 }

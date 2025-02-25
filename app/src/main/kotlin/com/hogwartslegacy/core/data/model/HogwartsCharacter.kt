@@ -1,6 +1,6 @@
 package com.hogwartslegacy.core.data.model
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
 
 data class HogwartsCharacter(
     val actor: String,
@@ -22,13 +22,13 @@ data class HogwartsCharacter(
     val yearOfBirth: Int?
 ) {
     enum class House {
-        @SerializedName("Gryffindor")
+        @SerialName("Gryffindor")
         GRYFFINDOR,
-        @SerializedName("Slytherin")
+        @SerialName("Slytherin")
         SLYTHERIN,
-        @SerializedName("Ravenclaw")
+        @SerialName("Ravenclaw")
         RAVENCLAW,
-        @SerializedName("Hufflepuff")
+        @SerialName("Hufflepuff")
         HUFFLEPUFF
     }
 }

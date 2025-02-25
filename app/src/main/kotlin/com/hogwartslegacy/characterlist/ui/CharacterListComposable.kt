@@ -1,4 +1,4 @@
-package com.hogwartslegacy.ui.characterlist
+package com.hogwartslegacy.characterlist.ui
 
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.background
@@ -31,8 +31,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hogwartslegacy.R
-import com.hogwartslegacy.presentation.CharacterListViewModel
-import com.hogwartslegacy.presentation.HogwartsCharacterState
+import com.hogwartslegacy.characterlist.presentation.CharacterListViewModel
+import com.hogwartslegacy.characterlist.presentation.HogwartsCharacterState
 import com.hogwartslegacy.ui.common.ErrorContent
 import com.hogwartslegacy.ui.common.LoadingContent
 import com.hogwartslegacy.ui.common.TopBarScaffold

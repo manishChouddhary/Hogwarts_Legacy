@@ -1,4 +1,4 @@
-package com.hogwartslegacy.ui.characterdetail
+package com.hogwartslegacy.characterdetail.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -33,8 +33,8 @@ import coil3.request.ImageRequest
 import coil3.request.transformations
 import com.hogwartslegacy.R
 import com.hogwartslegacy.core.data.model.HogwartsCharacter
-import com.hogwartslegacy.presentation.CharacterDetailViewModel
-import com.hogwartslegacy.presentation.CharacterState
+import com.hogwartslegacy.characterdetail.presentation.CharacterDetailViewModel
+import com.hogwartslegacy.characterdetail.presentation.CharacterState
 import com.hogwartslegacy.ui.common.ErrorContent
 import com.hogwartslegacy.ui.common.LoadingContent
 import com.hogwartslegacy.ui.common.TopBarScaffold

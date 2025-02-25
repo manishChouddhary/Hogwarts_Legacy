@@ -15,8 +15,8 @@ import com.hogwartslegacy.core.data.remote.RemoteDataSource
 import com.hogwartslegacy.core.data.remote.RetrofitHogwartsDataSource
 import com.hogwartslegacy.core.delegate.HogwartsDelegate
 import com.hogwartslegacy.core.delegate.OfflineFirstRepository
-import com.hogwartslegacy.presentation.CharacterDetailViewModel
-import com.hogwartslegacy.presentation.CharacterListViewModel
+import com.hogwartslegacy.characterdetail.presentation.CharacterDetailViewModel
+import com.hogwartslegacy.characterlist.presentation.CharacterListViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext

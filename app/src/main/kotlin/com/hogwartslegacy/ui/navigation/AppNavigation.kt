@@ -8,8 +8,8 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.hogwartslegacy.ui.characterdetail.CharacterDetailScreen
-import com.hogwartslegacy.ui.characterlist.CharacterListComposable
+import com.hogwartslegacy.characterdetail.ui.CharacterDetailScreen
+import com.hogwartslegacy.characterlist.ui.CharacterListComposable
 
 enum class Screen {
     SPLASH,

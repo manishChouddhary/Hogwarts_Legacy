@@ -1,4 +1,4 @@
-package com.hogwartslegacy.ui.characterlist
+package com.hogwartslegacy.characterlist.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -28,7 +28,7 @@ import coil3.request.transformations
 import coil3.transform.CircleCropTransformation
 import com.hogwartslegacy.R
 import com.hogwartslegacy.core.data.model.HogwartsCharacter
-import com.hogwartslegacy.presentation.HogwartsCharacterState
+import com.hogwartslegacy.characterlist.presentation.HogwartsCharacterState
 import com.hogwartslegacy.ui.theme.HogwartsLegacyTheme
 import com.hogwartslegacy.ui.theme.LocalExtendedColorScheme
 

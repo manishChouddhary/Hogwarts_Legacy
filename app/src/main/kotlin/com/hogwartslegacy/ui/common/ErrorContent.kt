@@ -1,5 +1,6 @@
 package com.hogwartslegacy.ui.common
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -29,6 +30,7 @@ fun ErrorContent(onRetry: (() -> Unit)? = null) {
         modifier = Modifier
             .fillMaxSize()
             .wrapContentSize(Alignment.Center)
+            .background(LocalExtendedColorScheme.current.background)
             .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -64,5 +66,7 @@ fun ErrorContent(onRetry: (() -> Unit)? = null) {
 @Preview
 @Composable
 fun ErrorContentPreview() {
-    HogwartsLegacyTheme { ErrorContent({}) }
+    HogwartsLegacyTheme {
+        ErrorContent({})
+    }
 }

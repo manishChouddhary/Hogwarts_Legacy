@@ -1,6 +1,5 @@
-package com.hogwartslegacy.presentation
+package com.hogwartslegacy.characterlist.presentation
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hogwartslegacy.core.HogwartsCore
@@ -11,8 +10,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
-
-const val BACKGROUND_THRESHOLD = 5000L
+import timber.log.Timber
 
 internal data class CharacterListState(
     val characterList: List<HogwartsCharacterState>? = null,
@@ -59,11 +57,11 @@ class CharacterListViewModel(hogwartsCore: HogwartsCore) : ViewModel() {
                     }
             )
         }.catch {
-            Log.d("List:", "Error loading list " + it.message)
+            Timber.d(it)
             emit(CharacterListState(isError = true))
         }.stateIn(
             viewModelScope,
-            SharingStarted.WhileSubscribed(BACKGROUND_THRESHOLD),
+            SharingStarted.WhileSubscribed(),
             CharacterListState(isLoading = true)
         )
 

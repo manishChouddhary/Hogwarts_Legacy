@@ -6,7 +6,7 @@ import com.hogwartslegacy.core.data.local.model.ProtoWand
 import com.hogwartslegacy.core.data.model.HogwartsCharacter
 import com.hogwartslegacy.core.data.model.Wand
 
-fun List<ProtoHogwartsCharacter>.toHogwartsCharacterList() = this.map {
+internal fun List<ProtoHogwartsCharacter>.toHogwartsCharacterList() = this.map {
     HogwartsCharacter(
         actor = it.actor,
         alive = it.alive,
@@ -28,9 +28,9 @@ fun List<ProtoHogwartsCharacter>.toHogwartsCharacterList() = this.map {
     )
 }
 
-fun String.nullIfEmpty(): String? = this.takeIf { it.isNotEmpty() }
+private fun String.nullIfEmpty(): String? = this.takeIf { it.isNotEmpty() }
 
-fun ProtoHouse.toHouse() = when (this) {
+internal fun ProtoHouse.toHouse() = when (this) {
     ProtoHouse.GRYFFINDOR -> HogwartsCharacter.House.GRYFFINDOR
     ProtoHouse.SLYTHERIN -> HogwartsCharacter.House.SLYTHERIN
     ProtoHouse.RAVENCLAW -> HogwartsCharacter.House.RAVENCLAW
@@ -38,13 +38,13 @@ fun ProtoHouse.toHouse() = when (this) {
     ProtoHouse.UNRECOGNIZED -> null
 }
 
-fun ProtoWand.toWand() = Wand(
+private fun ProtoWand.toWand() = Wand(
     this.core,
     this.length,
     this.wood
 )
 
-fun List<HogwartsCharacter>.toProtoHogwartsCharacterList() = this.map {
+internal fun List<HogwartsCharacter>.toProtoHogwartsCharacterList() = this.map {
     val builder = ProtoHogwartsCharacter.newBuilder()
         .setActor(it.actor)
         .setAlive(it.alive)
@@ -66,14 +66,14 @@ fun List<HogwartsCharacter>.toProtoHogwartsCharacterList() = this.map {
     builder.build()
 }
 
-fun HogwartsCharacter.House.toProtoHouse() = when (this) {
+internal fun HogwartsCharacter.House.toProtoHouse() = when (this) {
     HogwartsCharacter.House.GRYFFINDOR -> ProtoHouse.GRYFFINDOR
     HogwartsCharacter.House.SLYTHERIN -> ProtoHouse.SLYTHERIN
     HogwartsCharacter.House.RAVENCLAW -> ProtoHouse.RAVENCLAW
     HogwartsCharacter.House.HUFFLEPUFF -> ProtoHouse.HUFFLEPUFF
 }
 
-fun Wand.toProtoWand(): ProtoWand {
+internal fun Wand.toProtoWand(): ProtoWand {
     val builder = ProtoWand.newBuilder()
         .setCore(this.core)
         .setWood(this.wood)
