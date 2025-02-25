@@ -41,11 +41,14 @@ internal fun CharacterContent(
     val extendedColors = LocalExtendedColorScheme.current
     Box(
         modifier = Modifier
+            .fillMaxWidth()
             .background(extendedColors.surface, RoundedCornerShape(10.dp))
             .shadow(elevation = 2.dp, RoundedCornerShape(10.dp), clip = true)
     ) {
         Row(
-            modifier = modifier.fillMaxWidth().padding(10.dp),
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(10.dp),
             horizontalArrangement = Arrangement.spacedBy(10.dp),
         ) {
             character.profile?.let {
@@ -86,11 +89,13 @@ internal fun CharacterContent(
                     fontSize = 20.sp,
                     color = extendedColors.secondaryText
                 )
-                Text(
-                    text = stringResource(R.string.played_by_actor, character.actorName),
-                    fontSize = 20.sp,
-                    color = extendedColors.secondaryText
-                )
+                if (character.actorName.isNotEmpty()){
+                    Text(
+                        text = stringResource(R.string.played_by_actor, character.actorName),
+                        fontSize = 20.sp,
+                        color = extendedColors.secondaryText
+                    )
+                }
             }
         }
     }
