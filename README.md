@@ -19,10 +19,11 @@ Development highlights:
   9. Jetpack Navigation
   10. Jetpack Compose
 
-Demo:
-https://github.com/user-attachments/assets/523038a2-df52-4502-83cb-1f8c0a268173
+Demo:[Hogwarts.mp4.zip](https://github.com/user-attachments/files/18970175/Hogwarts.mp4.zip)
+
 
 <img src="https://github.com/user-attachments/assets/cb5b3bd0-1fc6-4660-b0d7-42947a81605e"  width="300" height="600">
 <img src="https://github.com/user-attachments/assets/a26d0825-f0fe-4c73-afee-4c707f175d8d"  width="300" height="600">
+
 
 
