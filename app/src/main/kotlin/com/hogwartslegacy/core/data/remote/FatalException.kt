@@ -1,6 +1,6 @@
 package com.hogwartslegacy.core.data.remote
 
-class FatalException(type: Type = Type.GENERIC) : Exception(type.message) {
+internal class FatalException(type: Type = Type.GENERIC) : Exception(type.message) {
     enum class Type(val message: String) {
         NETWORK_ERROR("Network error: Unable to get character list"),
         UNSUCCESSFUL_RESPONSE("Response error: Unsuccessful request"),

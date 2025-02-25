@@ -50,6 +50,7 @@ val hogwartsModule = module {
     single<LocalDataSource> { HogwartsLocalDataStore(androidContext().hogwartsDataStore) }
     single<HogwartsRepository> { OfflineFirstRepository(get(), get()) }
     single<HogwartsCore> { HogwartsDelegate(get()) }
+
     viewModel { CharacterListViewModel(get()) }
     viewModel { param -> CharacterDetailViewModel(param.get(), get()) }
 }

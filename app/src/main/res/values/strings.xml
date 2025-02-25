@@ -19,5 +19,8 @@
     <string name="species">Race</string>
     <string name="hogwarts">Hogwarts</string>
     <string name="gender">Gender</string>
+    <string name="error_message">Hogwarts is in Strife. Couldn\'t find any one</string>
+    <string name="retry">Knock again</string>
+    <string name="loading_message">Knocking doors of Hogwarts</string>
 
 </resources>
