@@ -39,58 +39,59 @@ internal fun CharacterContent(
     modifier: Modifier = Modifier
 ) {
     val extendedColors = LocalExtendedColorScheme.current
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .background(extendedColors.surface)
-            .shadow(elevation = 4.dp)
-            .padding(vertical = 10.dp, horizontal = 8.dp),
-        horizontalArrangement = Arrangement.spacedBy(10.dp),
+    Box(
+        modifier = Modifier
+            .background(extendedColors.surface, RoundedCornerShape(10.dp))
+            .shadow(elevation = 2.dp, RoundedCornerShape(10.dp), clip = true)
     ) {
-        character.profile?.let {
-            AsyncImage(
-                error = painterResource(R.drawable.profile),
-                model = ImageRequest.Builder(LocalContext.current)
-                    .data(it)
-                    .transformations(CircleCropTransformation())
-                    .build(),
-                contentDescription = null,
-                modifier = Modifier
-                    .background(color = extendedColors.surface)
-                    .size(54.dp)
-                    .align(Alignment.CenterVertically)
-            )
-        }
-        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Row(
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = character.name,
-                    fontSize = 26.sp,
-                    color = extendedColors.primaryText
-                )
-                Spacer(Modifier.weight(1f))
-                Box(
-                    Modifier
-                        .background(
-                            color = character.houseColor(),
-                            shape = RoundedCornerShape(14.dp)
-                        )
-                        .size(20.dp),
+        Row(
+            modifier = modifier.fillMaxWidth().padding(10.dp),
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            character.profile?.let {
+                AsyncImage(
+                    error = painterResource(R.drawable.profile),
+                    model = ImageRequest.Builder(LocalContext.current)
+                        .data(it)
+                        .transformations(CircleCropTransformation())
+                        .build(),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(54.dp)
+                        .align(Alignment.CenterVertically)
                 )
             }
-            Text(
-                text = character.species,
-                fontSize = 20.sp,
-                color = extendedColors.secondaryText
-            )
-            Text(
-                text = stringResource(R.string.played_by_actor, character.actorName),
-                fontSize = 20.sp,
-                color = extendedColors.secondaryText
-            )
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Row(
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = character.name,
+                        fontSize = 26.sp,
+                        color = extendedColors.primaryText
+                    )
+                    Spacer(Modifier.weight(1f))
+                    Box(
+                        Modifier
+                            .background(
+                                color = character.houseColor(),
+                                shape = RoundedCornerShape(14.dp)
+                            )
+                            .size(20.dp),
+                    )
+                }
+                Text(
+                    text = character.species,
+                    fontSize = 20.sp,
+                    color = extendedColors.secondaryText
+                )
+                Text(
+                    text = stringResource(R.string.played_by_actor, character.actorName),
+                    fontSize = 20.sp,
+                    color = extendedColors.secondaryText
+                )
+            }
         }
     }
 }
@@ -109,7 +110,7 @@ private fun HogwartsCharacterState.houseColor(): Color {
 
 @Composable
 @Preview
-fun CharacterContentPreview() {
+private fun CharacterContentPreview() {
     HogwartsLegacyTheme {
         Box(modifier = Modifier.fillMaxWidth()) {
             CharacterContent(
@@ -130,7 +131,7 @@ fun CharacterContentPreview() {
 
 @Composable
 @Preview
-fun CharacterContentDarkPreview() {
+private fun CharacterContentDarkPreview() {
     HogwartsLegacyTheme(darkTheme = true) {
         Box(modifier = Modifier.fillMaxWidth()) {
             CharacterContent(

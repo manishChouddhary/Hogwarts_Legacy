@@ -35,6 +35,7 @@ import com.hogwartslegacy.R
 import com.hogwartslegacy.core.data.model.HogwartsCharacter
 import com.hogwartslegacy.characterdetail.presentation.CharacterDetailViewModel
 import com.hogwartslegacy.characterdetail.presentation.CharacterState
+import com.hogwartslegacy.core.data.model.Wand
 import com.hogwartslegacy.ui.common.ErrorContent
 import com.hogwartslegacy.ui.common.LoadingContent
 import com.hogwartslegacy.ui.common.TopBarScaffold
@@ -116,6 +117,7 @@ internal fun CharacterDetailContent(
                 }
             }
             Divider()
+            WandInfo(character.wand)
             Row {
                 ValueLabel(
                     stringResource(R.string.species),
@@ -147,6 +149,38 @@ private fun Divider() {
 }
 
 @Composable
+private fun WandInfo(wand: Wand) {
+    if (wand.isValidInfo) {
+        Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Text(
+                text = stringResource(R.string.wand),
+                color = LocalExtendedColorScheme.current.primaryText,
+                fontSize = 24.sp
+            )
+            if (wand.core.isNotEmpty())
+                ValueLabel(stringResource(R.string.wand_core), wand.core)
+
+            Row {
+                wand.length?.toString()?.let {
+                    ValueLabel(
+                        stringResource(R.string.wand_length),
+                        it,
+                        modifier = Modifier.weight(1f)
+                    )
+                }
+                if (wand.wood.isNotEmpty())
+                    ValueLabel(
+                        stringResource(R.string.wand_wood),
+                        wand.wood,
+                        modifier = Modifier.weight(1f)
+                    )
+            }
+            Divider()
+        }
+    }
+}
+
+@Composable
 private fun ValueLabel(
     label: String,
     value: String,
@@ -175,12 +209,12 @@ private fun ValueLabel(
                 text = value,
                 color = LocalExtendedColorScheme.current.secondaryText,
                 fontSize = 24.sp,
-                style = MaterialTheme.typography.titleLarge
+                style = MaterialTheme.typography.titleLarge,
             )
             deadOrAlive?.let {
                 Text(
-                    text = it.deadOrAliveText,
-                    color = LocalExtendedColorScheme.current.success,
+                    text = it.deadOrAliveText.first,
+                    color = it.deadOrAliveText.second,
                     fontSize = 20.sp,
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.padding(start = 28.dp)
@@ -190,9 +224,10 @@ private fun ValueLabel(
     }
 }
 
-private val Boolean.deadOrAliveText: String
+private val Boolean.deadOrAliveText: Pair<String, Color>
     @Composable
-    get() = if (this) stringResource(R.string.alive) else stringResource(R.string.dead)
+    get() = if (this) stringResource(R.string.alive) to LocalExtendedColorScheme.current.success
+    else stringResource(R.string.dead) to LocalExtendedColorScheme.current.error
 
 private val Boolean.studentOfStaff: String
     @Composable
@@ -231,7 +266,8 @@ private fun CharacterDetailsPreview() {
                 isStaff = false,
                 dateOfBirth = "15-07-1980",
                 species = "human",
-                gender = "male"
+                gender = "male",
+                wand = Wand("phoenix feather", 11.0f, "holly")
             ),
             onBackPress = { }
         )

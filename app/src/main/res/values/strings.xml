@@ -22,5 +22,9 @@
     <string name="error_message">Hogwarts is in Strife. Couldn\'t find any one</string>
     <string name="retry">Knock again</string>
     <string name="loading_message">Knocking doors of Hogwarts</string>
+    <string name="wand_core">Core</string>
+    <string name="wand_length">Length</string>
+    <string name="wand_wood">Wood</string>
+    <string name="wand">Wand used</string>
 
 </resources>

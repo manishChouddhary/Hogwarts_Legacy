@@ -1,6 +1,6 @@
 package com.hogwartslegacy.core.data.model
 
-import kotlinx.serialization.SerialName
+import com.google.gson.annotations.SerializedName
 
 data class HogwartsCharacter(
     val actor: String,
@@ -22,13 +22,13 @@ data class HogwartsCharacter(
     val yearOfBirth: Int?
 ) {
     enum class House {
-        @SerialName("Gryffindor")
+        @SerializedName("Gryffindor")
         GRYFFINDOR,
-        @SerialName("Slytherin")
+        @SerializedName("Slytherin")
         SLYTHERIN,
-        @SerialName("Ravenclaw")
+        @SerializedName("Ravenclaw")
         RAVENCLAW,
-        @SerialName("Hufflepuff")
+        @SerializedName("Hufflepuff")
         HUFFLEPUFF
     }
 }
@@ -37,4 +37,6 @@ data class Wand(
     val core: String,
     val length: Float?,
     val wood: String
-)
+){
+    val isValidInfo = core.isNotEmpty() || length != null || wood.isNotEmpty()
+}

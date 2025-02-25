@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hogwartslegacy.core.HogwartsCore
 import com.hogwartslegacy.core.data.model.HogwartsCharacter
+import com.hogwartslegacy.core.data.model.Wand
 import com.hogwartslegacy.core.extension.dateShortMonthYear
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.catch
@@ -26,7 +27,8 @@ internal data class CharacterState(
     val isStaff: Boolean,
     val dateOfBirth: String?,
     val species: String,
-    val gender: String
+    val gender: String,
+    val wand: Wand
 )
 
 class CharacterDetailViewModel(
@@ -44,7 +46,8 @@ class CharacterDetailViewModel(
                 isStaff = it.hogwartsStaff,
                 dateOfBirth = it.dateOfBirth?.dateShortMonthYear(),
                 species = it.species,
-                gender = it.gender
+                gender = it.gender,
+                wand = it.wand
             )
         )
     }.catch {
